@@ -15,6 +15,25 @@ footer.appendChild(footerPara_1);
 footer.appendChild(a);
 footer.appendChild(footerPara_2)
 
+let bookLibrary = [];
+const bookForm = document.querySelector('#book-form');
+const inputs = document.querySelectorAll('input');
+
+// focus and blur events
+inputs.forEach(input => {
+    input.addEventListener('focus', () => {    
+    //   input.classList.remove('error');
+    //   input.classList.remove('valid');
+    if(!input.classList.contains('no-focus')){
+      input.classList.add('input-focus');
+    }
+  
+    });
+
+    input.addEventListener('blur', () => {
+          input.classList.remove('input-focus');
+  });
+});
 
 class Book {
     constructor(title, author, pages, read) {
@@ -25,10 +44,13 @@ class Book {
     }
     info (){
     return `"${this.title} by ${this.author}, ${this.pages}, ${this.read}"`;
-} 
-
+    } 
 }; 
 
-const hobbit = new Book("The Hobbit", "J.R.R Tolkien", "295 pages", "not read yet");
+// function addBookToLibrary(book) {
+    
+// }
 
-console.log(hobbit.info());
+// const hobbit = new Book("The Hobbit", "J.R.R Tolkien", "295 pages", "not read yet");
+
+// console.log(hobbit.info());

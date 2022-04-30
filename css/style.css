@@ -9,9 +9,90 @@ body {
 
 .container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1 0 auto;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    padding: 20px 50px 20px 50px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+}
+
+.form-group > input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid rgb(14, 13, 13);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.form-row {
+    display: flex;
+    font-weight: bold;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    gap: 15px;
+
+}
+
+.input-focus{
+    outline: none !important;
+    border: 2px solid #1f8fbb !important;
+    box-shadow: #1f8fbb 2px 2px 2px 2px !important;
+}
+.error {
+    outline: none !important;
+    border: 2px solid red   !important;
+    box-shadow: red 2px 2px 2px 2px;
+}
+
+.valid {
+    outline: none !important;
+    border: 2px solid green !important;
+    box-shadow: green 2px 2px 2px 2px !important;
+}
+
+#read-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 auto;
+    padding: 20px 50px 20px 50px;
+    
+}
+
+.add-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+}
+.add-book > button {
+    width: 200px;
+    background-color: #325e33;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
 /* Sticky Footer and credit */
 .footer {
     display: flex;
@@ -25,7 +106,7 @@ body {
 }
 
 #github-log {
-    padding-left: 3px;
+    padding-left: 8px;
     padding-right: 8px;
 }
 
