@@ -18,6 +18,17 @@ footer.appendChild(footerPara_2)
 let bookLibrary = [];
 const bookForm = document.querySelector('#book-form');
 const inputs = document.querySelectorAll('input');
+const read = document.querySelector('#read');
+const notRead = document.querySelector('#not-read');
+const pages = document.querySelector('#pages');
+
+read.addEventListener('click', (event) => {
+    checkboxHandler(event);
+});
+notRead.addEventListener('click', (event) => {
+    checkboxHandler(event);
+});
+
 
 // focus and blur events
 inputs.forEach(input => {
@@ -54,3 +65,22 @@ class Book {
 // const hobbit = new Book("The Hobbit", "J.R.R Tolkien", "295 pages", "not read yet");
 
 // console.log(hobbit.info());
+
+function checkboxHandler(event) {
+    if(event.target.id === 'read') {
+        read.checked = true;
+        notRead.checked = false;
+    } else {
+        read.checked = false;
+        notRead.checked = true;
+    }
+}
+
+// work on acepting only positive interger numbers
+// function checkPages(event) {
+//     if(pages.value < 1 || pages.value > 1000) {
+//         pages.classList.add('error');
+//     } else {
+//         pages.classList.remove('error');
+//     }
+// }

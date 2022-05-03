@@ -76,13 +76,13 @@ body {
     
 }
 
-.add-book {
+#add-book {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.25rem;
 }
-.add-book > button {
+#add-book > button {
     width: 200px;
     background-color: #325e33;
     color: white;
