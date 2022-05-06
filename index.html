@@ -5,54 +5,201 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="scripts/script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+    <script src="scripts/indexScript.js" defer></script>
     <title>Library</title>
 </head>
 <body>
-    <main class="container">
-        <div class="form-container">        
-            <header class="header">
-                <h1>Add Book to Library</h1>
-            </header>
-            <form action ="" method="post" id="book-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="title">Book Title</label>
-                        <input type="text" name="title" id="title" required oninvalid="this.setCustomValidity('Book title is required')"
-                        oninput="setCustomValidity('')">
-                    </div>
-                    <div class="form-group">
-                        <label for="author">Author</label>
-                        <input type="text" name="author" id="author" required oninvalid="this.setCustomValidity('Author Name is required')"
-                        oninput="setCustomValidity('')">
-                    </div>                    
-                    <div class="form-group">
-                        <label for="pages">Number of Pages</label>
-                        <input type="text" inputmode="numeric" name="pages" id="pages" pattern ="^[1-9]\d*$" required oninvalid="this.setCustomValidity('Valid Number of pages required, whole numbers only (no decimals) and min-value: 1')"
-                        oninput="setCustomValidity('')">
-                        <p id="pages-feedback"></p>
-                    </div>                           
-                    <div class="form-group" id="read-status">
-                        <div>
-                            <label for="read">Read</label>
-                            <input type="checkbox" name="read" class="no-focus" id="read" > 
-                        </div>
-                        <div>
-                        <label for="not-read">Not Read</label>
-                        <input type="checkbox" name="not-read" class= "no-focus" id="not-read" checked>                   
-                        </div>
-                    </div> 
-                </div>   
-                <div id="add-book">
-                    <button>Add Book</button>
-                    <!-- consider a button to go to dasshboard -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="imgs/view-dashboard.svg" alt="Dashboard logo">            
+            <h1 class="logo-text">Library</h1>
+        </div>
+        <div class="home">
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <img class="icon" src="imgs/home-account.svg" alt="home icon">
+                        <a href="#home">Home</a> 
+                    </li>
+                    <li class="nav-item">
+                        <img class="icon" src="imgs/facebook-messenger.png" alt="Profile icon">
+                        <a href="#profile">Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <img class="icon" src="imgs/view-list-outline.svg" alt="messages icon">
+                        <a href="#messages">Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <img class="icon" src="imgs/clock-time-four-outline.svg" alt="history icon">
+                        <a href="#history">Completed</a>
+                    </li>
+                    <li class="nav-item">
+                        <img class="icon" src="imgs/file-document-multiple.svg" alt="tasks icon">
+                        <a href="#tasks">Reading Queue</a>
+                    </li>
+                    <li class="nav-item">
+                        <img class="icon" src="imgs/account-group.png" alt="communities icon">
+                        <a href="#comunities">Book Club</a>
+                    </li>
+                </ul>
+            </nav>      
+        </div>
+        <div class="settings">
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <img class="icon" src="imgs/cog-stop-outline.svg" alt="settings icon">
+                        <a href="#settings">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <img class="icon" src="imgs/message-question-outline.png" alt="support">
+                        <a href="#support">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <img class="icon" src="imgs/shield-account.png" alt="privacy icon">
+                        <a href="#privacy">Privacy</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>    
+    <main class="wrapper">
+        <div class="header">
+            <div class="header-1">
+                <div class="header-1a">
+                    <img class="icon-small" src="imgs/magnify.png" alt="search icon"> 
+                    <input id="search-bar" type="text"> 
                 </div>
-            </form>
-        </div>  
-    </main>        
-    <footer>
-        <div class="footer"></div>
-    </footer>         
+                <div class="header-1b">
+                    <input type="image" class="icon" id="bell" src="imgs/bell-ring.png" alt="Notifications icon">
+                    <img class="avatar-small" src="imgs/fat-mafia.jpg" alt="Avatar showing drawing of man in a hat">  
+                    <h3>Jonathan Soprano</h3>
+                </div>
+            </div>
+            <div class="header-2">
+                <div class="header-2a">
+                    <img class="avatar-medium" src="imgs/fat-mafia.jpg" alt="Avatar showing drawing of man in a hat">
+                    <p>Hi there,<br>
+                        <span id="name">Jonathan Soprano (@jpman83)</span>
+                    </p>  
+                </div>
+                <div class="header-2b">
+                    <a href="addBook.html"><button class="glow-on-hover">Add Book</button></a>
+                    <button class="glow-on-hover">Share</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container-header-left">
+                <p>Your Books</p>
+            </div>
+            <div class="container-header-right">
+                <p>Recent Books</p>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <p class="title">book 1</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Duis aute irure dolor in reprehenderit in voluptate velit esse cillum...</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
+                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                    </div>
+                </div>
+                <div class="card">
+                    <p class="title">Book 2</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla...</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
+                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                    </div>                
+                </div>
+                <div class="card">
+                    <p class="title">Book 3</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim nec libero justo laoreet sit amet cursus sit. Quam id leo in vitae. Gravida cum sociis...</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
+                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                    </div>                
+                </div>
+                <div class="card">
+                    <p class="title">Book 4</p>
+                    <p>Pharetra convallis posuere morbi leo urna. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Sagittis orci a enim nulla aliquet porttitor lacus luctus accumsan tortor dolor purus non enim. Pulvinar neque laoreet...</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
+                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                    </div>                
+                </div>
+                <div class="card">
+                    <p class="title">Book 5</p>
+                    <p>Et magnis dis parturient montes nascetur ridiculus. Et netus et malesuada fames ac turpis egestas. Pulvinar elementum integer enim neque eu tincidunt tortor aliquam nulla. At ultrices mi tempus imperdiet nulla...</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
+                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                    </div>                
+                </div>
+                <div class="card">
+                    <p class="title">Book 6</p>
+                    <p>Posuere morbi leo urna molestie. Senectus et netus et malesuada. Vivamus at augue eget arcu dictum varius duis at consectetur. Libero id faucibus massa tempor nec feugiat nisl pretium. Nisl pretium fusce id velit. Erat pellentesque...</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
+                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                    </div>                
+                </div>
+            </div> 
+            <div class="right-sidebar">
+                <div class="right-sidebar-top">
+                    <div class="announcement-card">
+                        <p class="announcement-tittle">Most Recent</p>
+                        <p>Fermentum leo vel orci porta non pulvinar. Nibh mauris cursus mattis molestie a iaculis. Morbi quis commodo odio aenean...</p>
+                    </div>
+                    <div class="announcement-card">
+                        <p class="announcement-tittle">2nd Most recent</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna...</p>
+                    </div>
+                    <div class="announcement-card">
+                        <p class="announcement-tittle">3rd Most recent</p>
+                        <p>Faucibus vitae aliquet nec ullamcorper sit. Massa eget egestas purus viverra. Eget gravida cum sociis natoquer...</p>
+                    </div>
+                </div>
+                <p id="trending">Club Members</p>
+                <div class="right-sidebar-bottom">
+                    <div class="trending-item">
+                        <input type="image" class="avatar-small trending-input" src="imgs/skinny-mafia.jpg" alt="Avatar showing drawing of man in a hat">
+                        <p> <span class="handle">@tegan</span><br>
+                            online
+                        </p>  
+                    </div>
+                    <div class="trending-item">
+                        <input type="image" class="avatar-small trending-input" src="imgs/fat-mafia.jpg" alt="Avatar showing drawing of man in a hat">
+                        <p><span class="handle">@jpman83</span><br>
+                            online
+                        </p>
+                    </div>
+                    <div class="trending-item">
+                        <input type="image" class="avatar-small trending-input" src="imgs/gamer-cat.jpg" alt="Avatar showing drawing of man in a hat">
+                        <p><span class="handle">@kendall</span><br>
+                            offline
+                        </p>
+                    </div>
+                    <div class="trending-item">
+                        <input type="image" class="avatar-small trending-input" src="imgs/tiger.jpg" alt="Avatar showing drawing of man in a hat">
+                        <p><span class="handle">@alex</span><br>
+                            online
+                        </p>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer"></div>
+        </footer> 
+    </main> 
 </body>
 </html>

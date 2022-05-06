@@ -58,6 +58,7 @@ class Book {
 bookForm.addEventListener('submit', (event) => {
     event.preventDefault();
     addBookToLibrary();
+    // redirect to the library page
 });
 function addBookToLibrary() {
     let bookReadStatus = read.checked === true ? 'read' : 'not read yet';
@@ -66,7 +67,10 @@ function addBookToLibrary() {
     console.log(book.info());
 }
 
-// const hobbit = new Book("The Hobbit", "J.R.R Tolkien", "295 pages", "not read yet");
+const hobbit = new Book("The Hobbit", "J.R.R Tolkien", "295", "read");
+const hobbit2 = new Book("The Hobbit 2", "J.R.R Tolkien", "295", "not read yet");
+const hobbit3 = new Book("The Hobbit 3", "J.R.R Tolkien", "295", "not read yet");
+bookLibrary.push(hobbit, hobbit2, hobbit3);
 
 // console.log(hobbit.info());
 
