@@ -18,9 +18,11 @@ footer.appendChild(footerPara_2)
 let bookLibrary = [];
 const bookForm = document.querySelector('#book-form');
 const inputs = document.querySelectorAll('input');
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const pages = document.querySelector('#pages');
 const read = document.querySelector('#read');
 const notRead = document.querySelector('#not-read');
-const pages = document.querySelector('#pages');
 
 read.addEventListener('click', (event) => {
     checkboxHandler(event);
@@ -29,16 +31,12 @@ notRead.addEventListener('click', (event) => {
     checkboxHandler(event);
 });
 
-
 // focus and blur events
 inputs.forEach(input => {
     input.addEventListener('focus', () => {    
-    //   input.classList.remove('error');
-    //   input.classList.remove('valid');
-    if(!input.classList.contains('no-focus')){
-      input.classList.add('input-focus');
-    }
-  
+        if(!input.classList.contains('no-focus')){
+        input.classList.add('input-focus');
+        }
     });
 
     input.addEventListener('blur', () => {
@@ -54,13 +52,19 @@ class Book {
         this.read = read
     }
     info (){
-    return `"${this.title} by ${this.author}, ${this.pages}, ${this.read}"`;
+    return `"${this.title} by ${this.author}, ${this.pages + " pages"}, ${this.read}"`;
     } 
 }; 
-
-// function addBookToLibrary(book) {
-    
-// }
+bookForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    addBookToLibrary();
+});
+function addBookToLibrary() {
+    let bookReadStatus = read.checked === true ? 'read' : 'not read yet';
+    let book = new Book(title.value, author.value, pages.value, bookReadStatus);
+    bookLibrary.push(book);
+    console.log(book.info());
+}
 
 // const hobbit = new Book("The Hobbit", "J.R.R Tolkien", "295 pages", "not read yet");
 
@@ -75,12 +79,3 @@ function checkboxHandler(event) {
         notRead.checked = true;
     }
 }
-
-// work on acepting only positive interger numbers
-// function checkPages(event) {
-//     if(pages.value < 1 || pages.value > 1000) {
-//         pages.classList.add('error');
-//     } else {
-//         pages.classList.remove('error');
-//     }
-// }

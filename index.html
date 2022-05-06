@@ -11,26 +11,27 @@
 </head>
 <body>
     <main class="container">
-        <header class="header">
-            <h1 class="header__title">Add Book to Library</h1>
-        </header>
-        <div class="form-container">
-            <form action="" method="post" id="#book-form">
+        <div class="form-container">        
+            <header class="header">
+                <h1>Add Book to Library</h1>
+            </header>
+            <form action ="" method="post" id="book-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="title">Book Title</label>
-                        <input type="text" name="title" id="title" required oninvalid="this.setCustomValidity('Book title required')"
+                        <input type="text" name="title" id="title" required oninvalid="this.setCustomValidity('Book title is required')"
                         oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="author">Author</label>
-                        <input type="text" name="author" id="author" required oninvalid="this.setCustomValidity('Author Name required')"
+                        <input type="text" name="author" id="author" required oninvalid="this.setCustomValidity('Author Name is required')"
                         oninput="setCustomValidity('')">
                     </div>                    
                     <div class="form-group">
                         <label for="pages">Number of Pages</label>
-                        <input type="text" name="pages" id="pages" required oninvalid="this.setCustomValidity('Number of pages required to track progress')"
+                        <input type="text" inputmode="numeric" name="pages" id="pages" pattern ="^[1-9]\d*$" required oninvalid="this.setCustomValidity('Valid Number of pages required, whole numbers only (no decimals) and min-value: 1')"
                         oninput="setCustomValidity('')">
+                        <p id="pages-feedback"></p>
                     </div>                           
                     <div class="form-group" id="read-status">
                         <div>
