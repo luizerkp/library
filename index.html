@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
-    <script src="scripts/indexScript.js" defer></script>
+    <script src="scripts/script.js" defer></script>
     <title>Library</title>
 </head>
-<body>
+<body onload="index();">
     <div class="sidebar">
         <div class="logo">
             <img src="imgs/view-dashboard.svg" alt="Dashboard logo">            
@@ -23,16 +23,16 @@
                         <a href="#home">Home</a> 
                     </li>
                     <li class="nav-item">
-                        <img class="icon" src="imgs/facebook-messenger.png" alt="Profile icon">
+                        <img class="icon" src="imgs/heart.png" alt="Profile icon">
                         <a href="#profile">Favorites</a>
                     </li>
                     <li class="nav-item">
-                        <img class="icon" src="imgs/view-list-outline.svg" alt="messages icon">
+                        <img class="icon" src="imgs/view-list-outline.svg" alt="list icon">
                         <a href="#messages">Progress</a>
                     </li>
                     <li class="nav-item">
-                        <img class="icon" src="imgs/clock-time-four-outline.svg" alt="history icon">
-                        <a href="#history">Completed</a>
+                        <img class="icon" src="imgs/check.png" alt="check icon">
+                        <a href="#history">Finished</a>
                     </li>
                     <li class="nav-item">
                         <img class="icon" src="imgs/file-document-multiple.svg" alt="tasks icon">
@@ -95,77 +95,130 @@
                 <p>Your Books</p>
             </div>
             <div class="container-header-right">
-                <p>Recent Books</p>
+                <p>Recently Added</p>
             </div>
             <div class="card-container">
-                <div class="card">
-                    <p class="title">book 1</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Duis aute irure dolor in reprehenderit in voluptate velit esse cillum...</p>
+                <div class="card" id="sample">
+                    <p class="title">Book title </p>
+                    <p>Author Name</p>
+                    <p>Number of pages</p>
                     <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
-                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
                     </div>
                 </div>
-                <div class="card">
+                <!-- <div class="card">
                     <p class="title">Book 2</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla...</p>
+                    <p>Author 2</p>
+                    <p>book 2 pages</p>
                     <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
-                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
                     </div>                
                 </div>
                 <div class="card">
                     <p class="title">Book 3</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim nec libero justo laoreet sit amet cursus sit. Quam id leo in vitae. Gravida cum sociis...</p>
+                    <p>Author 3</p>
+                    <p>book 3 pages</p>
                     <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
-                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
                     </div>                
                 </div>
                 <div class="card">
                     <p class="title">Book 4</p>
-                    <p>Pharetra convallis posuere morbi leo urna. Facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat. Sagittis orci a enim nulla aliquet porttitor lacus luctus accumsan tortor dolor purus non enim. Pulvinar neque laoreet...</p>
+                    <p>Author 4</p>
+                    <p>book 4 pages</p>
                     <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
-                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
                     </div>                
                 </div>
                 <div class="card">
                     <p class="title">Book 5</p>
-                    <p>Et magnis dis parturient montes nascetur ridiculus. Et netus et malesuada fames ac turpis egestas. Pulvinar elementum integer enim neque eu tincidunt tortor aliquam nulla. At ultrices mi tempus imperdiet nulla...</p>
+                    <p>Author 5</p>
+                    <p>book 5 pages</p>
                     <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
-                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
                     </div>                
                 </div>
                 <div class="card">
                     <p class="title">Book 6</p>
-                    <p>Posuere morbi leo urna molestie. Senectus et netus et malesuada. Vivamus at augue eget arcu dictum varius duis at consectetur. Libero id faucibus massa tempor nec feugiat nisl pretium. Nisl pretium fusce id velit. Erat pellentesque...</p>
+                    <p>Author 6</p>
+                    <p>book 6 pages</p>
                     <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/star-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/eye-plus.png" alt="Add to watch list">
-                        <input type="image" class="icon-small" src="imgs/source-fork.png" alt="fork this project">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
                     </div>                
                 </div>
+                <div class="card">
+                    <p class="title">Book 7</p>
+                    <p>Author 6</p>
+                    <p>book 6 pages</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
+                    </div>                
+                </div>
+                <div class="card">
+                    <p class="title">Book 8</p>
+                    <p>Author 6</p>
+                    <p>book 6 pages</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
+                    </div>                
+                </div>
+                <div class="card">
+                    <p class="title">Book 9</p>
+                    <p>Author 6</p>
+                    <p>book 6 pages</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
+                    </div>                
+                </div>
+                <div class="card">
+                    <p class="title">Book 10</p>
+                    <p>Author 6</p>
+                    <p>book 6 pages</p>
+                    <div class="card-inputs">
+                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
+                    </div>                
+                </div>                                                                 -->
             </div> 
             <div class="right-sidebar">
                 <div class="right-sidebar-top">
                     <div class="announcement-card">
                         <p class="announcement-tittle">Most Recent</p>
-                        <p>Fermentum leo vel orci porta non pulvinar. Nibh mauris cursus mattis molestie a iaculis. Morbi quis commodo odio aenean...</p>
                     </div>
                     <div class="announcement-card">
                         <p class="announcement-tittle">2nd Most recent</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna...</p>
                     </div>
                     <div class="announcement-card">
                         <p class="announcement-tittle">3rd Most recent</p>
-                        <p>Faucibus vitae aliquet nec ullamcorper sit. Massa eget egestas purus viverra. Eget gravida cum sociis natoquer...</p>
                     </div>
                 </div>
                 <p id="trending">Club Members</p>
