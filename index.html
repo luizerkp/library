@@ -5,11 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="scripts/script.js" defer></script>
     <title>Library</title>
 </head>
-<body onload="index();">
+<!-- in future build this project with a backend -->
+<body>
+    <div class="modal">
+        <div class="modal-content"> 
+            <span class="close-button">&times; Close</span>               
+            <div class="form-container">            
+                <header class="modal-header">
+                    <h1>Add Book to Library</h1>
+                </header> 
+                <form action ="" method="post" id="book-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="title">Book Title</label>
+                            <input type="text" name="title" id="title" required oninvalid="this.setCustomValidity('Book title is required')"
+                            oninput="setCustomValidity('')">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <input type="text" name="author" id="author" required oninvalid="this.setCustomValidity('Author Name is required')"
+                            oninput="setCustomValidity('')">
+                        </div>                    
+                        <div class="form-group">
+                            <label for="pages">Number of Pages</label>
+                            <input type="text" inputmode="numeric" name="pages" id="pages" pattern ="^[1-9]\d*$" required oninvalid="this.setCustomValidity('Valid Number of pages required, whole numbers only (no decimals) and min-value: 1')"
+                            oninput="setCustomValidity('')">
+                            <p id="pages-feedback"></p>
+                        </div>                           
+                        <div class="form-group" id="read-status">
+                            <div>
+                                <label for="read">Read</label>
+                                <input type="checkbox" name="read" class="no-focus" id="read" > 
+                            </div>
+                            <div>
+                            <label for="not-read">Not Read</label>
+                            <input type="checkbox" name="not-read" class= "no-focus" id="not-read" checked>                   
+                            </div>
+                        </div> 
+                    </div>   
+                    <div id="add-book">
+                        <button>Add Book</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="sidebar">
         <div class="logo">
             <img src="imgs/view-dashboard.svg" alt="Dashboard logo">            
@@ -85,7 +129,7 @@
                     </p>  
                 </div>
                 <div class="header-2b">
-                    <a href="addBook.html"><button class="glow-on-hover">Add Book</button></a>
+                    <button class="glow-on-hover" id="showAddBook">Add Book</button>
                     <button class="glow-on-hover">Share</button>
                 </div>
             </div>
@@ -97,121 +141,22 @@
             <div class="container-header-right">
                 <p>Recently Added</p>
             </div>
-            <div class="card-container">
+            <div class="card-container" id="cards">
                 <div class="card" id="sample">
                     <p class="title">Book title </p>
                     <p>Author Name</p>
                     <p>Number of pages</p>
                     <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
+                        <input type="image" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" src="imgs/trash-can-outline.png" alt="Delete Book">
                     </div>
-                </div>
-                <!-- <div class="card">
-                    <p class="title">Book 2</p>
-                    <p>Author 2</p>
-                    <p>book 2 pages</p>
-                    <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
-                    </div>                
-                </div>
-                <div class="card">
-                    <p class="title">Book 3</p>
-                    <p>Author 3</p>
-                    <p>book 3 pages</p>
-                    <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
-                    </div>                
-                </div>
-                <div class="card">
-                    <p class="title">Book 4</p>
-                    <p>Author 4</p>
-                    <p>book 4 pages</p>
-                    <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
-                    </div>                
-                </div>
-                <div class="card">
-                    <p class="title">Book 5</p>
-                    <p>Author 5</p>
-                    <p>book 5 pages</p>
-                    <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
-                    </div>                
-                </div>
-                <div class="card">
-                    <p class="title">Book 6</p>
-                    <p>Author 6</p>
-                    <p>book 6 pages</p>
-                    <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
-                    </div>                
-                </div>
-                <div class="card">
-                    <p class="title">Book 7</p>
-                    <p>Author 6</p>
-                    <p>book 6 pages</p>
-                    <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
-                    </div>                
-                </div>
-                <div class="card">
-                    <p class="title">Book 8</p>
-                    <p>Author 6</p>
-                    <p>book 6 pages</p>
-                    <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
-                    </div>                
-                </div>
-                <div class="card">
-                    <p class="title">Book 9</p>
-                    <p>Author 6</p>
-                    <p>book 6 pages</p>
-                    <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
-                    </div>                
-                </div>
-                <div class="card">
-                    <p class="title">Book 10</p>
-                    <p>Author 6</p>
-                    <p>book 6 pages</p>
-                    <div class="card-inputs">
-                        <input type="image" class="icon-small" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" class="icon-small" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" class="icon-small" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" class="icon-small" src="imgs/trash-can-outline.png" alt="Delete">
-                    </div>                
-                </div>                                                                 -->
+                </div>                                                              
             </div> 
             <div class="right-sidebar">
                 <div class="right-sidebar-top">
-                    <div class="announcement-card">
+                    <div class="announcement-card test">
                         <p class="announcement-tittle">Most Recent</p>
                     </div>
                     <div class="announcement-card">
