@@ -22,28 +22,28 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="title">Book Title</label>
-                            <input type="text" name="title" id="title" required oninvalid="this.setCustomValidity('Book title is required')"
+                            <input type="text" name="title" class="modal-input" id="title" required oninvalid="this.setCustomValidity('Book title is required')"
                             oninput="setCustomValidity('')">
                         </div>
                         <div class="form-group">
                             <label for="author">Author</label>
-                            <input type="text" name="author" id="author" required oninvalid="this.setCustomValidity('Author Name is required')"
+                            <input type="text" name="author" class="modal-input" id="author" required oninvalid="this.setCustomValidity('Author Name is required')"
                             oninput="setCustomValidity('')">
                         </div>                    
                         <div class="form-group">
                             <label for="pages">Number of Pages</label>
-                            <input type="text" inputmode="numeric" name="pages" id="pages" pattern ="^[1-9]\d*$" required oninvalid="this.setCustomValidity('Valid Number of pages required, whole numbers only (no decimals) and min-value: 1')"
+                            <input type="text" inputmode="numeric" class="modal-input" name="pages" id="pages" pattern ="^[1-9]\d*$" required oninvalid="this.setCustomValidity('Valid Number of pages required, whole numbers only (no decimals) and min-value: 1')"
                             oninput="setCustomValidity('')">
                             <p id="pages-feedback"></p>
                         </div>                           
                         <div class="form-group" id="read-status">
                             <div>
                                 <label for="read">Read</label>
-                                <input type="checkbox" name="read" class="no-focus" id="read" > 
+                                <input type="checkbox" name="read" id="read" > 
                             </div>
                             <div>
                             <label for="not-read">Not Read</label>
-                            <input type="checkbox" name="not-read" class= "no-focus" id="not-read" checked>                   
+                            <input type="checkbox" name="not-read" id="not-read" checked>                   
                             </div>
                         </div> 
                     </div>   
@@ -143,14 +143,16 @@
             </div>
             <div class="card-container" id="cards">
                 <div class="card" id="sample">
+                    <input type="image" id="plus" src="imgs/icons8-plus-50.png" alt="Plus symbol">
                     <p class="title">Book title </p>
-                    <p>Author Name</p>
+                    <p>by</p>
+                    <p>Author's Name</p>
                     <p>Number of pages</p>
                     <div class="card-inputs">
-                        <input type="image" src="imgs/heart-plus-outline.png" alt="Add to favorites">
-                        <input type="image" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
-                        <input type="image" src="imgs/trash-can-outline.png" alt="Delete Book">
+                        <input type="image" name="favorite" src="imgs/heart-plus-outline.png" alt="Add to favorites">
+                        <input type="image" name="read" src="imgs/check-outline.png" alt="Mark as Complete">
+                        <input type="image" name="queue"src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" name="delete" src="imgs/trash-can-outline.png" alt="Delete Book">
                     </div>
                 </div>                                                              
             </div> 
