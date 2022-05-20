@@ -17,11 +17,28 @@ footer.appendChild(footerPara_2)
 
 let bookLibrary = [];
 
+// handles modal form submission
 const showAddBookForm = document.querySelector("#showAddBook");
 const modal = document.querySelector(".modal");
-const closeButton = document.querySelector(".close-button")
+const closeButton = document.querySelector(".close-button");
+
+// handles modal form trigger from the sample card
 const addSymbol = document.getElementById("plus");
+
+// sample card is the card that is cloned to create new cards
 const sampleCard = document.getElementById("sample");
+
+// handle side menu
+const mostRecent = document.querySelector("#recent-first");
+const dateOne = document.querySelector("#date-1");
+const secondRecent = document.querySelector("#recent-second");
+const dateTwo = document.querySelector("#date-2");
+const thirdRecent = document.querySelector("#recent-third");
+const dateThree = document.querySelector("#date-3");
+
+
+// used to append new books to the DOM and add events to the new books
+const cardContainer = document.getElementById("cards");
 
 showAddBookForm.addEventListener('click', () => {
     modal.classList.add("show-modal");
@@ -33,6 +50,11 @@ showAddBookForm.addEventListener('click', () => {
 
 addSymbol.addEventListener('click', () => {
     showAddBookForm.click();
+});
+
+// handles event lisnteners for the card-inputs icons delegated to card-container to handle dynamically added books
+cardContainer.addEventListener('click', (event) => {
+    handleCardClick(event);
 });
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +117,6 @@ const selectIconsFunctions = {
     "delete": deleteBook
 }
 
-
 if (bookLibrary.length > 0) {
     bookLibrary.forEach((book) => {
         buildBookDisplay(book);
@@ -112,7 +133,6 @@ function addBookToLibrary() {
     let bookReadStatus = read.checked === true ? 'read' : 'not read yet';
     let book = new Book(title.value, author.value, pages.value, bookReadStatus);
     bookLibrary.push(book);
-    // console.log(book.info());
     buildBookDisplay(book);
 }
 
@@ -124,18 +144,22 @@ function checkboxHandler(event) {
         read.checked = false;
         notRead.checked = true;
     }
-}    
+} 
+
+function handleCardClick(event) {
+    if(event.target.classList.contains('icon-list')) {
+        selectIconsFunctions[event.target.name](event);
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////// Logic for index.html non-modal content /////////////////////////////////////////////////////
+////////////////////////////////////////////////// Logic for index.html non-modal content ///////////////////////////////////////////////////
 
 // build card display... still need to complete
 function buildBookDisplay(book){
-    // get card container
-    const cardContainer = document.getElementById("cards");
 
     // clone sample card
     const bookCard = sampleCard.cloneNode(true); 
@@ -145,7 +169,6 @@ function buildBookDisplay(book){
 
     // Remove plus symbol which is the first child of sample card that was cloned
     bookCard.removeChild(bookCard.children[0]);
-
 
     // Update the first 3 children nodes' text content
     // Since first child was removed now .children[0] is the book title child element
@@ -175,17 +198,12 @@ function buildBookDisplay(book){
     if(book.read === 'read') {
         bookCard.children[4].children[1].src = "./imgs/check-green.png";
     }
+    // store book object index in data-index attribute
+    bookCard.dataset.index = bookLibrary.indexOf(book);
 
     cardContainer.prepend(bookCard);
+    shuffleRecentlyAdded(bookCard.children[0].textContent, bookCard.children[0].dataset.title);
 }    
-
-const selectIcons = document.querySelectorAll(".icon-list")
-
-selectIcons.forEach(icon => {
-    icon.addEventListener('click', (event) => {
-        selectIconsFunctions[event.target.name](event);
-    });
-});
 
 function addToFavorite(event) {
     if(event.target.id === 'favorited') {
@@ -218,8 +236,49 @@ function toggleQueue(event) {
 }
 
 function deleteBook(event) {
-    //trying to delete book from library
-    // bookLibrary.splice(bookLibrary.indexOf(event.target.parentNode.parentNode), 1);
+    // get index of book to be deleted from data-index attribute
+    let bookIndex = event.target.parentElement.parentElement.dataset.index; 
+
+    // remove book from library
+    bookLibrary.splice(bookIndex, 1);
+
+    // remove book from DOM
     event.target.parentElement.parentElement.remove();
-    console.log(bookLibrary);
+   
+    // update data-index attribute for all remaining books in DOM
+    changeDataSetIndex(bookIndex);
+}
+
+function changeDataSetIndex(idx) {
+    // get all book cards
+    const books = document.querySelectorAll(".card");
+
+    // if only the sample card is in the DOM, there is no need to change the data-index attribute
+    // if lentgh of books is less than idx it means that the book removed from library was the last book in the library
+    if (books.length > 1 && books > idx) {
+        books.forEach((book) => {
+            // change data-index attribute for all books in DOM to reflect the new index of book objects in library
+            // if index of deleted book is less than the index of the book in the DOM, the index of 
+                // the book in the DOM needs to be decremented to reflect the new index of the book in the library
+            if (book.dataset.index > idx) {
+                book.dataset.index--;
+            }            
+        });
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////// Recently Added Right Sidebar//////////////////////////////////////////////////////////
+
+function shuffleRecentlyAdded(title, titleTooltip = null) {
+    thirdRecent.textContent = secondRecent.textContent;
+    dateThree.textContent = dateTwo.textContent;
+    secondRecent.textContent = mostRecent.textContent;
+    dateTwo.textContent = dateOne.textContent;
+    mostRecent.textContent = title;
+    dateOne.textContent = new Date().toLocaleDateString();
+
+    if(titleTooltip) {
+        mostRecent.dataset.title = titleTooltip;
+    }
 }

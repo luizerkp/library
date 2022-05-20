@@ -627,6 +627,7 @@ a:hover {
     border-radius: 10px;
 }
 
+
 #trending {
     grid-row: 2/3;
 }
@@ -644,11 +645,16 @@ a:hover {
     grid-template-rows: repeat(3, minmax(1fr, 150px));
     justify-content: center;
     align-items: center;
-    font-size: 12px;
-    font-weight: normal;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
     padding-bottom: 10px;
     border: none;
     border-bottom: solid 2px rgba(14, 30, 37, 0.20);
+}
+
+.date {
+    color: dimgray;
 }
 
 .announcement-card:last-child {

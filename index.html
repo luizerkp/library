@@ -148,24 +148,28 @@
                     <p>by</p>
                     <p>Author's Name</p>
                     <p>Number of pages</p>
+                    <!-- add data title tooltip show what each icon does i.e "Add to Favorites" -->
                     <div class="card-inputs">
                         <input type="image" name="favorite" src="imgs/heart-plus-outline.png" alt="Add to favorites">
                         <input type="image" name="read" src="imgs/check-outline.png" alt="Mark as Complete">
-                        <input type="image" name="queue"src="imgs/file-document-plus-outline.png" alt="Add to Queue">
+                        <input type="image" name="queue" src="imgs/file-document-plus-outline.png" alt="Add to Queue">
                         <input type="image" name="delete" src="imgs/trash-can-outline.png" alt="Delete Book">
                     </div>
                 </div>                                                              
             </div> 
             <div class="right-sidebar">
                 <div class="right-sidebar-top">
-                    <div class="announcement-card test">
-                        <p class="announcement-tittle">Most Recent</p>
+                    <div class="announcement-card">
+                        <p class="announcement-tittle" id="recent-first">Most Recent</p>
+                        <p class="date" id="date-1"></p>
                     </div>
                     <div class="announcement-card">
-                        <p class="announcement-tittle">2nd Most recent</p>
+                        <p class="announcement-tittle" id="recent-second">Most recent</p>
+                        <p class="date" id="date-2"></p>
                     </div>
                     <div class="announcement-card">
-                        <p class="announcement-tittle">3rd Most recent</p>
+                        <p class="announcement-tittle" id="recent-third">Most recent</p>
+                        <p class="date" id="date-3"></p>
                     </div>
                 </div>
                 <p id="trending">Club Members</p>
