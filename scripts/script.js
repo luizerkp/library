@@ -219,9 +219,11 @@ function toggleRead(event) {
     if(event.target.id === 'complete') {
         event.target.src = "./imgs/check-outline.png";
         event.target.removeAttribute("id");
+        bookLibrary[event.target.parentElement.parentElement.dataset.index].read = 'not read yet';
     } else {
         event.target.src = "./imgs/check-green.png"; 
         event.target.setAttribute("id", "complete");
+        bookLibrary[event.target.parentElement.parentElement.dataset.index].read = 'read';
     }
 }
 
